@@ -1,0 +1,20 @@
+<div class="card-container">
+  <img
+    [src]="pokemon ? pokemon.sprites.front_default : 'adas'"
+    alt="image"
+    class="card-image"
+  />
+  <div class="card-info">
+    <div class="card-info-top">
+      <h2 class="name">{{ pokemon ? pokemon.name : "N / A" }}</h2>
+      <span class="order"># {{ pokemon ? pokemon.order : "N / A" }}</span>
+    </div>
+    <div class="type-container" *ngIf="pokemon; else noType">
+      <div *ngFor="let type of pokemon.types">
+        <span class="type">{{ type.type.name }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #noType> </ng-template>

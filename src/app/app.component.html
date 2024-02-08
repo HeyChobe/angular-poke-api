@@ -1,0 +1,6 @@
+<app-navbar></app-navbar>
+<div class="card-container">
+  <div *ngFor="let pokemon of pokemons">
+    <app-card [pokemon]="pokemon" />
+  </div>
+</div>
