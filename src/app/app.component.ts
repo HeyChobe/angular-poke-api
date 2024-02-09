@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Pokemon } from "src/utils/types";
 import { PokeApiService } from "./poke-api.service";
+import { Observable, of } from "rxjs";
 
 @Component({
   selector: "app-root",
@@ -8,13 +9,11 @@ import { PokeApiService } from "./poke-api.service";
   styleUrls: ["./app.component.css"],
 })
 export class AppComponent implements OnInit {
-  pokemons: Pokemon[] = [];
+  pokemons: Observable<Pokemon[]> = of([]);
 
   constructor(private pokeApiService: PokeApiService) {}
 
   ngOnInit(): void {
-    this.pokeApiService.getPokemons().subscribe(response => {
-      this.pokemons = response;
-    })
+    this.pokemons = this.pokeApiService.getPokemons();
   }
 }
