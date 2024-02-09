@@ -13,6 +13,8 @@ export class AppComponent implements OnInit {
   constructor(private pokeApiService: PokeApiService) {}
 
   ngOnInit(): void {
-    this.pokemons = this.pokeApiService.getPokemons();
+    this.pokeApiService.getPokemons().subscribe(response => {
+      this.pokemons = response;
+    })
   }
 }
